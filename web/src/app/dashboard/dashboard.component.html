@@ -1,0 +1,24 @@
+<div class="body" *ngIf="obd">
+    <mat-card class="speed-card" [class]="obd.speed > 80 ? 'plaid':''">
+        <mat-icon>speed</mat-icon>
+        <div class="speed">{{ obd.speed | number: '1.0-0'}}</div> <div class="unit kmh">km/h</div>
+    </mat-card>
+    <mat-card class="rpm-card" [class]="obd.speed > 80 ? 'plaid':''">
+        <mat-icon>rotate_right</mat-icon>
+        <div class="rpm">{{ obd.rpm | number: '1.0-0'}}</div> <div class="unit min-1">min⁻¹</div>
+    </mat-card>
+    <mat-card class="temp-card">
+        <mat-icon>thermostat</mat-icon>
+        <div class="temp">{{ obd.coolantTemp | number: '1.0-0'}}</div> <div class="unit celsius">°C</div>
+    </mat-card>
+    <mat-card class="throttle-card">
+        <mat-icon *ngIf="obd.throttlePos < 20">airline_seat_legroom_reduced</mat-icon>
+        <mat-icon *ngIf="obd.throttlePos >= 20 && obd.throttlePos < 60">airline_seat_legroom_normal</mat-icon>
+        <mat-icon *ngIf="obd.throttlePos >= 70">airline_seat_legroom_extra</mat-icon>
+        <div class="throttle">{{ obd.throttlePos | number: '1.0-0'}}</div> <div class="unit percent">%</div>
+    </mat-card>
+    <mat-card class="load-card">
+        <mat-icon>bolt</mat-icon>
+        <div class="load">{{ obd.engineLoad | number: '1.0-0'}}</div> <div class="unit percent">%</div>
+    </mat-card>
+</div>

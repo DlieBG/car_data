@@ -25,7 +25,6 @@ class OBD:
             self.getValue(obd.commands.SPEED, "speed", "kph")
             self.getValue(obd.commands.RPM, "rpm")
             self.getValue(obd.commands.THROTTLE_POS, "throttlePos")
-            self.getValue(obd.commands.OIL_TEMP, "oilTemp")
             self.getValue(obd.commands.ENGINE_LOAD, "engineLoad")
             self.getValue(obd.commands.COOLANT_TEMP, "coolantTemp")
 

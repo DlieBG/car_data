@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.3'
 
 services:  
   db:
@@ -14,10 +14,10 @@ services:
 
   pgadmin:
     container_name: pgadmin4_container
-    image: dpage/pgadmin4
+    image: benuhx/pgadmin4-pi
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: root
-      PGADMIN_DEFAULT_PASSWORD: root
+      PGADMIN_DEFAULT_EMAIL: "root@pg.de"
+      PGADMIN_DEFAULT_PASSWORD: "root"
     ports:
-      - "6007:80"
+      - "6007:5050"

@@ -15,8 +15,8 @@ export class DashboardService {
     if(!environment.production)
       return new Observable<OBD>((observer) => {
         observer.next({
-          speed: 86.5,
-          rpm: 6500,
+          speed: 50.5,
+          rpm: 2800,
           throttlePos: 18.442556,
           engineLoad: 0.5,
           coolantTemp: 90

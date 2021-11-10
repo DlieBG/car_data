@@ -7,6 +7,17 @@
         <mat-icon>rotate_right</mat-icon>
         <div class="rpm">{{ obd.rpm | number: '1.0-0'}}</div> <div class="unit min-1">min⁻¹</div>
     </mat-card>
+    <mat-card class="gear-card">
+        <mat-icon>settings</mat-icon>
+        <div class="gear" *ngIf="obd.speed < 1">-</div>
+        <div class="gear" *ngIf="120 < obd.rpm/obd.speed">1</div>
+        <div class="gear" *ngIf="69 < obd.rpm/obd.speed && obd.rpm/obd.speed < 75">2</div>
+        <div class="gear" *ngIf="47 < obd.rpm/obd.speed && obd.rpm/obd.speed < 51">3</div>
+        <div class="gear" *ngIf="34 < obd.rpm/obd.speed && obd.rpm/obd.speed < 37">4</div>
+        <div class="gear" *ngIf="27 < obd.rpm/obd.speed && obd.rpm/obd.speed < 30">5</div>
+        <mat-icon class="shift-down" *ngIf="!(120 < obd.rpm/obd.speed) && obd.speed > 5 && obd.rpm < 1200">arrow_downward</mat-icon>
+        <mat-icon class="shift-up" *ngIf="!(27 < obd.rpm/obd.speed && obd.rpm/obd.speed < 30) && obd.rpm > 2000">arrow_upward</mat-icon>
+    </mat-card>
     <mat-card class="temp-card">
         <mat-icon>thermostat</mat-icon>
         <div class="temp">{{ obd.coolantTemp | number: '1.0-0'}}</div> <div class="unit celsius">°C</div>

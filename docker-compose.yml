@@ -11,13 +11,3 @@ services:
       POSTGRES_DB: postgres
     ports:
       - "5432:5432"
-
-  pgadmin:
-    container_name: pgadmin4_container
-    image: benuhx/pgadmin4-pi
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: "root@pg.de"
-      PGADMIN_DEFAULT_PASSWORD: "root"
-    ports:
-      - "6007:5050"

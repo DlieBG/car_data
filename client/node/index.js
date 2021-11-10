@@ -1,7 +1,7 @@
 var OBDReader = require('obd2-over-serial');
 var options = {};
 options.baudRate = 115200;
-var serialOBDReader = new OBDReader("/dev/ttyusb0", options);
+var serialOBDReader = new OBDReader("/dev/ttyUSB0", options);
 var dataReceivedMarker = {};
 
 serialOBDReader.on('dataReceived', function (data) {

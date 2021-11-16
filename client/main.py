@@ -4,8 +4,15 @@ import sys
 import time
 import threading, http.server, socketserver
 from http.server import HTTPServer, BaseHTTPRequestHandler
+import json
 
-values = {}
+values = {
+    "speed": 0.0,
+    "rpm": 0.0,
+    "throttlePos": 0.0,
+    "egnineLoad": 0.0,
+    "coolantTemp": 0.0,
+}
 
 class OBD:
     connection = None
@@ -13,11 +20,10 @@ class OBD:
     def __init__(self):
         while True:
             self.connection = obd.OBD()
-            self.values = {}
 
             if self.connection.is_connected():
-                print("Connected to OBDII adapter")
-                break
+               print("Connected to OBDII adapter")
+               break
 
             sleep(5)
 
@@ -35,8 +41,8 @@ class OBD:
             response = self.connection.query(command).value
 
             if unit:
-                response = response.to(unit)
-
+               response = response.to(unit)
+            
             values[field] = float(response.magnitude)
         except:
             values[field] = float(0)
@@ -45,10 +51,11 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Content-Type', 'application/json')
         self.end_headers()
 
         if "/json" in self.path:
-            self.wfile.write(bytes(str(dict(values)).replace("'", '"') , encoding="utf8"))
+            self.wfile.write(json.dumps(values).encode(encoding='utf_8'))
 
 class Server:
     def __init__(self):
@@ -64,5 +71,5 @@ serverThread = threading.Thread(target=Server)
 serverThread.daemon = True
 serverThread.start()
 
-while True:
-    sleep(100)
+obdThread.join()
+serverThread.join()

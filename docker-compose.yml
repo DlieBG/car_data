@@ -13,6 +13,6 @@ services:
     restart: unless-stopped
     tty: true
     volumes:
-      -"./out:/usr/src/app/out"
+      - "./out:/usr/src/app/out"
     devices:
       - "/dev/video0:/dev/video0"

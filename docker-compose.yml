@@ -1,0 +1,18 @@
+version: "3.5"
+
+services:
+  obd:
+    build: obd
+    restart: unless-stopped
+    tty: true
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+
+  camera:
+    build: camera
+    restart: unless-stopped
+    tty: true
+    volumes:
+      -"./out:/usr/src/app/out"
+    devices:
+      - "/dev/video0:/dev/video0"

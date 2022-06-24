@@ -1,5 +1,4 @@
-import obd, sys
-from time import sleep
+import obd, sys, time, requests
 
 def get_value(command, unit=None):
     try:
@@ -13,7 +12,7 @@ def get_value(command, unit=None):
         return float(0)
 
 def upload_values(values):
-    print(values)
+    requests.post("http://backend/obd", json=values)
 
 tries = 0
 
@@ -30,7 +29,7 @@ while True:
         sys.exit(1)
 
     tries += 1
-    sleep(5)
+    time.sleep(5)
 
 while True:
     upload_values({

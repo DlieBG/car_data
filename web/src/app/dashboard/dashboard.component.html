@@ -28,3 +28,7 @@
         <div class="load">{{ obd.engineLoad | number: '1.0-0'}}</div> <div class="unit percent">%</div>
     </mat-card>
 </div>
+
+<div class="body" *ngIf="!obd">
+    <mat-icon>home</mat-icon>
+</div>

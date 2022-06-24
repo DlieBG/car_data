@@ -1,0 +1,9 @@
+version: "3.5"
+
+services:
+  test:
+    build: obd
+    restart: unless-stopped
+    tty: true
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"

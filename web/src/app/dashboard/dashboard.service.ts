@@ -15,7 +15,7 @@ export class DashboardService {
     if(!environment.production)
       return of({
           speed: 50.5,
-          rpm: 2800,
+          rpm: 1800,
           throttlePos: 18.442556,
           engineLoad: 0.5,
           coolantTemp: 90
